@@ -2,13 +2,14 @@
 <%@ page session="false" %>
 <html>
 <head>
-	<title>Home</title>
+<meta charset="UTF-8">
+	<title>index jsp</title>
 </head>
 <body>
-<h1>
-	Hello world!  
-</h1>
-
-<P>  The time on the server is ${serverTime}. </P>
+<h3>Hompage -Model Using object</h3>
+today is ${today }.
+<hr>
+<h3>Hompage -Model Using object</h3>
+current time is ${now }.
 </body>
 </html>
