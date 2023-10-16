@@ -9,7 +9,7 @@
 <h3>Hompage -Model Using object</h3>
 today is ${today }.
 <hr>
-<h3>Hompage -Model Using object</h3>
+<h3>Hompage -ModelAndView Using object</h3>
 current time is ${now }.
 </body>
 </html>

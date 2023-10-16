@@ -11,10 +11,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import member.MemberVO;
 
 @Controller
 public class HomeController {
@@ -70,6 +73,29 @@ public class HomeController {
 		model.addAttribute("gender",g);
 		model.addAttribute("email",email);
 		model.addAttribute("method", "@RequestParam");
+		
+		return "member/info";
+	}
+	
+	//데이터 객체(DTO/VO)사용
+	@RequestMapping("/joinDataObject")
+	public String join(MemberVO vo, Model model) {
+		model.addAttribute("vo",vo);
+		model.addAttribute("method","데이터 객체");
+		
+		return "member/info";
+	}
+	
+	//@PathVariable로 form의 데이터를 접근
+	@RequestMapping("/joinPathVariable/{name}/{gender}/{eamil}")
+	public String join(@PathVariable String name, Model model,
+			@PathVariable String gender, @PathVariable String email) {
+		//@PathVariable은 파라미터마다 어노테이션을 따로 지정해주어야한다.
+		//Model의 위치는 파라미터 처음, 중간, 끝, 어디여도 상관없다
+		model.addAttribute("name",name);
+		model.addAttribute("gender",gender);
+		model.addAttribute("email",email);
+		model.addAttribute("method","@PathVariable");
 		
 		return "member/info";
 	}
