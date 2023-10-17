@@ -62,7 +62,7 @@ public class HomeController {
 	}
 	
 	//@RequestParam으로 form의 데이터를 접근
-	@RequestMapping("/joinRequestPara")
+	@RequestMapping("/joinRequestParam")
 	public String join(Model model, String name,
 			@RequestParam("gender") String g, String email) {
 		//지정해도 되지만 지정하지 않아도 기본적으로 @RequestParam 처리가 된다.
@@ -87,7 +87,7 @@ public class HomeController {
 	}
 	
 	//@PathVariable로 form의 데이터를 접근
-	@RequestMapping("/joinPathVariable/{name}/{gender}/{eamil}")
+	@RequestMapping("/joinPathVariable/{name}/{gender}/{email}")
 	public String join(@PathVariable String name, Model model,
 			@PathVariable String gender, @PathVariable String email) {
 		//@PathVariable은 파라미터마다 어노테이션을 따로 지정해주어야한다.
