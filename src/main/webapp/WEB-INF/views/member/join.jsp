@@ -36,7 +36,7 @@
 function go_submit(f) {
 	f.action = 'joinPathVariable/' + f.name.value
 				 + '/' + f.gender.value
-				 + '/' + f.email.value; 
+				 + '/' + f.email.value+ '/'; 
 }
 
 

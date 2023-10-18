@@ -1,11 +1,11 @@
 package com.ms.web;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -100,4 +100,36 @@ public class HomeController {
 		return "member/info";
 	}
 	
+	//1. forward - 요청하는 url과 응답하는 페이지가 서로 다르게 지정할 수 있는 형태
+	//			 - 실제 응답하는 페이지의 url이 아닌, 요청하는 url이 유지되는 형태
+	//2. redirect- 요청하는 url에 해당하는 페이지가 응답하는 형태
+	
+	//로그인 화면
+	@RequestMapping("/login")
+	public String login() {
+		return "member/login";
+	}
+	
+	//로그인 결과 화면
+	@RequestMapping("/login_result")
+	public String login_result(String id, String pw) {
+		//아이디, 비번 일치 -> home 화면으로
+		//일치하지 않으면 로그인 화면으로
+		//DB에서 읽어온 데이터가 hong, 1234라고 가정
+		if(id.equals("hong") && pw.equals("1234")){
+			return "redirect:/";
+		}else {
+			return "redirect:login";
+		}
+	}
+	
+	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	
+	@RequestMapping(value="/", method=RequestMethod.GET)
+	public String home(HttpSession session, Locale locale, Model model) {
+
+		session.removeAttribute("category");
+		
+		return "home";
+	}
 }
